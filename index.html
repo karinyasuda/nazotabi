@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" >
+  <title> PHP基礎</title>
+  <script type="text/javascript" src="api.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+  <script>
+
+
+  $(function(){
+    //いきたい！ボタンでscrapboxの中からおすすめ観光地を表示したい
+    $('#go').click (function() {
+      $.get("https://scrapbox.io/api/pages/nazotabi/place/text").done(function(data){console.log(data)})
+
+    });
+  });
+
+</script>
+</head>
+<body>
+
+  <h2>scrapbox api</h2>
+  <div>
+    <!-- <label for="go">どこか行きたい！</label>＜br> -->
+    <input id="go" type="button" value="どこか行きたい！">
+    <div id="static_result" style="border: 2px solid #595">[結果出力]</div>
+
+  </div>
+
+
+
+  <!-- javascript:url=location.href.replace(/io\//,"io/api/pages/");
+  // x=new XMLHttpRequest();
+  // x.open("get",url,false);
+  // x.send(null);
+  // d=JSON.parse(x.responseText);s=d.title+"\n\n";for(i=1;i<d.lines.length;i++) s+=d.lines[i].text+"\n";
+  // location="textwell://replace?text="+encodeURIComponent(s);
+  //
+  // <! <input name="nickname" type="text" style="width:100px" /> -->
+
+
+</body>
+<footer>
+
+</footer>
+
+</html>
