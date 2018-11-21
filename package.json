@@ -2,7 +2,7 @@
   "name": "nazotabi",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "pagelist.js",
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.4"
@@ -10,8 +10,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node pagelist.js"
   },
   "author": "",
   "license": "ISC"
 }
+/*  変更ずみ server -> pagelist */

@@ -2,6 +2,13 @@ var axios = require('axios');//ライブラリを読み込む
 var express = require('express');
 var app = express();
 
+// サーバーを起動する部分
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+  console.log('Example app listening at http://%s:%s', host, port);
+});
+
 var array
 var title
 var descriptions
@@ -10,6 +17,8 @@ var activity = []
 // var random
 var randomplace
 var randomactivity
+
+// function onclick(){
 app.get('/', function (req, res)  {
   axios.get('http://scrapbox.io/api/pages/nazotabi')
   .then(response => {
@@ -42,7 +51,6 @@ app.get('/', function (req, res)  {
     randomplace = place[Math.floor(Math.random()*place.length)];
     randomactivity = activity[Math.floor(Math.random()*activity.length)];
 
-
     // console.log(random);
     console.log(randomplace);
     console.log(randomactivity);
@@ -56,15 +64,8 @@ app.get('/', function (req, res)  {
     //randomplaceからタイトルを。randomactivityからタイトルを
     res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
     // console.log(randomplace.title + randomactivity.title);
-
+    textarea.value = (randomplace.title +"で"+ randomactivity.title + "してきて！");
 
   });
 });
-
-
-// サーバーを起動する部分
-var server = app.listen(3000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
-});
+// };
