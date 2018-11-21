@@ -3,13 +3,11 @@ var express = require('express');
 var app = express();
 
 var array
-var json
-var obj
 var title
 var descriptions
-var random
 var place = []
 var activity = []
+// var random
 var randomplace
 var randomactivity
 app.get('/', function (req, res)  {
