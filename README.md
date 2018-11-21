@@ -1,0 +1,2 @@
+# nazotabi
+scrapbox nazotabi
