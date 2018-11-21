@@ -56,7 +56,7 @@ app.get('/', function (req, res)  {
     // res.send(random.title + random.descriptions);
 
     //randomplaceからタイトルを。randomactivityからタイトルを
-    res.send(randomplace.title +"で"+ randomactivity.title + "しろ");
+    res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
     // console.log(randomplace.title + randomactivity.title);
 
 
