@@ -12,12 +12,13 @@ var server = app.listen(3000, function () {
 var array
 var title
 var descriptions
+var image
 var place = []
 var activity = []
 // var random
 var randomplace
 var randomactivity
-
+var pimage
 // function onclick(){
 app.get('/', function (req, res)  {
   axios.get('http://scrapbox.io/api/pages/nazotabi')
@@ -28,6 +29,7 @@ app.get('/', function (req, res)  {
     for (let i = 0 ; i <array.length ; i ++ ){
       title = array[i]["title"]
       descriptions = array[i]["descriptions"]
+      image = array[i]["image"]
       //indexOf()ではマッチしなかったとき-1を返す。 > -1 ということはマッチした場合を表している
       if (descriptions.indexOf("#place") > -1 ){
         //配列　placeに追加する
@@ -35,9 +37,6 @@ app.get('/', function (req, res)  {
         // console.log(place);
       }else if(descriptions.indexOf("#activity") > -1 ){
         activity.push(array[i])
-        // title = activity["title"]
-        // descriptions = activity["descriptions"]
-        // // console.log(activity);
       };
       // title = array[i]["title"]
       // descriptions = array[i]["descriptions"]
@@ -46,7 +45,7 @@ app.get('/', function (req, res)  {
       // random = array[Math.floor(Math.random()* array.length)];
       // console.log(random.title);
     };
-    // random = array[Math.floor(Math.random()* array.length)];
+    // ランダムはこう書く random = array[Math.floor(Math.random()* array.length)];
 
     randomplace = place[Math.floor(Math.random()*place.length)];
     randomactivity = activity[Math.floor(Math.random()*activity.length)];
@@ -54,6 +53,8 @@ app.get('/', function (req, res)  {
     // console.log(random);
     console.log(randomplace);
     console.log(randomactivity);
+    console.log(randomplace.image);
+    console.log(randomactivity.image);
     // console.log(random.title);
     // console.log(random.descriptions);
 
@@ -62,9 +63,10 @@ app.get('/', function (req, res)  {
     // res.send(random.title + random.descriptions);
 
     //randomplaceからタイトルを。randomactivityからタイトルを
+    // res.set('Content-Type', 'image/raw');  //ヘッダの指定 jpeg
     res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
     // console.log(randomplace.title + randomactivity.title);
-    textarea.value = (randomplace.title +"で"+ randomactivity.title + "してきて！");
+    // textarea.value = (randomplace.title +"で"+ randomactivity.title + "してきて！");
 
   });
 });
