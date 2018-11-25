@@ -19,7 +19,13 @@ var activity = []
 var randomplace
 var randomactivity
 var pimage
-// function onclick(){
+
+function getVariable(){
+   var x = "We were called!!!";//ログで確認
+  return x;
+}
+
+
 app.get('/', function (req, res)  {
   axios.get('http://scrapbox.io/api/pages/nazotabi')
   .then(response => {
@@ -38,15 +44,12 @@ app.get('/', function (req, res)  {
       }else if(descriptions.indexOf("#activity") > -1 ){
         activity.push(array[i])
       };
-      // title = array[i]["title"]
-      // descriptions = array[i]["descriptions"]
       // console.log (array[i]["title"] + "\n" + array[i]["descriptions"]);
       // console.log (title);
       // random = array[Math.floor(Math.random()* array.length)];
-      // console.log(random.title);
     };
-    // ランダムはこう書く random = array[Math.floor(Math.random()* array.length)];
 
+    // ランダムはこう書く random = array[Math.floor(Math.random()* array.length)];
     randomplace = place[Math.floor(Math.random()*place.length)];
     randomactivity = activity[Math.floor(Math.random()*activity.length)];
 

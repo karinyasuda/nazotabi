@@ -2,10 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8" >
-  <title> PHP基礎</title>
-  <script type="text/javascript" src="api.js"></script>
+  <title> nazotabi</title>
+  <script type="text/javascript" src="front.js"></script>
+  
   <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
-  <script>
+  <!-- /* <script>
 
 
   $(function(){
@@ -16,15 +17,17 @@
     });
   });
 
-</script>
+</script> */ -->
 </head>
 <body>
+
 
   <h2>scrapbox api</h2>
   <div>
     <!-- <label for="go">どこか行きたい！</label>＜br> -->
-    <input id="go" type="button" value="どこか行きたい！">
-    <div id="static_result" style="border: 2px solid #595">[結果出力]</div>
+    <input id="go" type="button" value="どこか行きたい！" onclick="go()">
+    <div id="result" style="border: 2px solid #595 ">[結果出力]</div>
+
 
   </div>
 
