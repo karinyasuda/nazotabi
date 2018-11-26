@@ -1,6 +1,10 @@
 var axios = require('axios');//ライブラリを読み込む
 var express = require('express');
+var path = require('path');
 var app = express();
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 // サーバーを起動する部分
 var server = app.listen(3000, function () {
@@ -67,7 +71,8 @@ app.get('/', function (req, res)  {
 
     //randomplaceからタイトルを。randomactivityからタイトルを
     // res.set('Content-Type', 'image/raw');  //ヘッダの指定 jpeg
-    res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
+    // res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
+    res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて`});
     // console.log(randomplace.title + randomactivity.title);
     // textarea.value = (randomplace.title +"で"+ randomactivity.title + "してきて！");
 
