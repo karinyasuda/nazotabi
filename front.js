@@ -1,4 +1,3 @@
-// var axios = require('axios');//ライブラリを読み込む なぜエラーになる？
 var x
 var randomplace
 var randomactivity
@@ -10,14 +9,16 @@ var randomactivity
 //    console.log("We were called!");
 //    console.log(data);
 // }
+window.onload = onLoad;
 
-function onload(){
-  document.write("<script type='text/javascript' src='pagelist.js'></script>");
+function onLoad(){//ロードされた時に実行されるよ！
+  // document.write("<script type='text/javascript' src='pagelist.js'></script>");
   console.log(x);
+  console.log("onLoad!");
 
 }
 
-function go() {
+function go() {//html goボタンでの動作
      console.log("We were called!");//ログで確認
      target = document.getElementById("result");//id result を持つタグ要素を呼び出す
      target.innerHTML = "Where we go?";//innerHTMLは、htmlの内容を変更するのに活躍
