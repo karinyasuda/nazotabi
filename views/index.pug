@@ -1,0 +1,42 @@
+doctype html
+html(lang='ja')
+    head
+        meta(charset="utf-8")
+        title なぞたび
+        script(type='text/javascript').
+          window.onload = function(){
+            const reloadButton = document.getElementById("reloadButton");
+            if (reloadButton != null){
+              reloadButton.addEventListener('click',function (){
+                console.log("新しい旅に出会います");
+                location.reload();
+              })
+            }
+            const plusButton = document.getElementById("plusButton");
+            if(plusButton != null){
+              plusButton.addEventListener('click',function(){
+                alert("いいね！");
+              })
+
+            }
+            const minusButton = document.getElementById("minusButton");
+            if(minusButton != null){
+              minusButton.addEventListener('click',function(){
+                alert("うーん……");
+              })
+
+            }
+
+          }
+    body
+        div#header
+        div#navigation
+        div#content
+            h1 helloWorld!
+            h2= message
+            input#reloadButton(type="button", value="新しい旅に出会う！")
+            input#plusButton(type="button", value="いいね")
+            input#minusButton(type="button", value="うーん")
+
+
+        div#footer
