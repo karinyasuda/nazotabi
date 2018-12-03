@@ -73,6 +73,10 @@ app.get('/', function (req, res)  {
     // res.set('Content-Type', 'image/raw');  //ヘッダの指定 jpeg
     // res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
     res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて`});
+    // res.locals.placeimage = `${randomplace.image}`;
+    // res.locals.activityimage = `${randomactivity.image}`;
+    // res.render( 'index', {placeimage: `${randomplace.image}`});
+    // res.render( 'index', {activityimage: `${randomactivity.image}`});
     // console.log(randomplace.title + randomactivity.title);
     // textarea.value = (randomplace.title +"で"+ randomactivity.title + "してきて！");
 

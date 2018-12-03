@@ -10,7 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node pagelist.html"
+    "start": "node pagelist.js"
   },
   "author": "",
   "license": "ISC"
