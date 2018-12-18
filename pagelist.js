@@ -10,19 +10,21 @@ app.set('view engine', 'pug');
 var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
-  console.log('Example app listening at http://%s:%s', host, port);
+  console.log('Example app listening at http:/ /%s:%s', host, port);
 });
 
 var array
 var title
 var descriptions
 var image
-var place = []
+var place = [] //place,image それぞれの配列に入れる
 var activity = []
 // var random
 var randomplace
 var randomactivity
-var pimage
+
+var $pimagejpg //.jpgへreplace後
+var $aimagejpg
 
 function getVariable(){
    var x = "We were called!!!";//ログで確認
@@ -58,10 +60,32 @@ app.get('/', function (req, res)  {
     randomactivity = activity[Math.floor(Math.random()*activity.length)];
 
     // console.log(random);
+    $pimage = randomplace.image
+    $aimage = randomactivity.image
+
+  console.log("place と activity 内容")
     console.log(randomplace);
     console.log(randomactivity);
+  console.log("imageのURL");
     console.log(randomplace.image);
     console.log(randomactivity.image);
+
+
+    //もし、randomplace.image、randomactivity,image がnullじゃなかったら/rawを.jpg にリプレースする
+    if ($pimage == 'null'){
+       $pimagejpg = $pimage.replace('null','写真がありません');
+    }else {
+       $pimagejpg = $pimage.replace('/raw','.jpg');
+    };
+    if($aimage == 'null'){
+      $aimagejpg = $aimage.replace('null','アクティビティの写真がありません');
+    }else {
+      $aimagejpg = $aimage.replace('/raw','.jpg')
+    };
+
+    console.log($pimagejpg);
+    console.log($aimagejpg);
+
     // console.log(random.title);
     // console.log(random.descriptions);
 
@@ -72,7 +96,7 @@ app.get('/', function (req, res)  {
     //randomplaceからタイトルを。randomactivityからタイトルを
     // res.set('Content-Type', 'image/raw');  //ヘッダの指定 jpeg
     // res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
-    res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて`});
+    res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて${$pimagejpg}`});
     // res.locals.placeimage = `${randomplace.image}`;
     // res.locals.activityimage = `${randomactivity.image}`;
     // res.render( 'index', {placeimage: `${randomplace.image}`});
