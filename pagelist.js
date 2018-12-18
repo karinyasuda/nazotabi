@@ -71,19 +71,20 @@ app.get('/', function (req, res)  {
     console.log(randomactivity.image);
 
 
-    //もし、randomplace.image、randomactivity,image がnullじゃなかったら/rawを.jpg にリプレースする
-    if ($pimage == 'null'){
-       $pimagejpg = $pimage.replace('null','写真がありません');
-    }else {
+    // もし、randomplace.image、randomactivity,image がnullじゃなかったら/rawを.jpg にリプレースする
+    if ($pimage == null){
+       $pimagejpg = 'Placeの写真がありません';
+       console.log($pimagejpg);
+    }else if ($pimage != null) {
        $pimagejpg = $pimage.replace('/raw','.jpg');
+       console.log($pimagejpg);
     };
-    if($aimage == 'null'){
-      $aimagejpg = $aimage.replace('null','アクティビティの写真がありません');
-    }else {
+    if($aimage == null){
+      $aimagejpg = 'Activityの写真がありません';
+    }else if ($aimage!= null){
       $aimagejpg = $aimage.replace('/raw','.jpg')
     };
-
-    console.log($pimagejpg);
+    // console.log($pimagejpg);
     console.log($aimagejpg);
 
     // console.log(random.title);
