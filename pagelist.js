@@ -26,6 +26,8 @@ var randomactivity
 var $pimagejpg //.jpgへreplace後
 var $aimagejpg
 
+var $placetitle
+var $activitytitle
 function getVariable(){
    var x = "We were called!!!";//ログで確認
   return x;
@@ -58,6 +60,8 @@ app.get('/', function (req, res)  {
     // ランダムはこう書く random = array[Math.floor(Math.random()* array.length)];
     randomplace = place[Math.floor(Math.random()*place.length)];
     randomactivity = activity[Math.floor(Math.random()*activity.length)];
+    placetitle = randomplace.title;
+    activitytitle = randomactivity.title;
 
     // console.log(random);
     $pimage = randomplace.image
@@ -66,9 +70,15 @@ app.get('/', function (req, res)  {
   console.log("place と activity 内容")
     console.log(randomplace);
     console.log(randomactivity);
+
   console.log("imageのURL");
     console.log(randomplace.image);
     console.log(randomactivity.image);
+
+  console.log("タイトルだけ出力");
+    console.log(placetitle);
+    console.log(activitytitle);
+
 
 
     // もし、randomplace.image、randomactivity,image がnullじゃなかったら/rawを.jpg にリプレースする
@@ -81,11 +91,11 @@ app.get('/', function (req, res)  {
     };
     if($aimage == null){
       $aimagejpg = 'Activityの写真がありません';
-    }else if ($aimage!= null){
+    }else if ($aimage != null){
       $aimagejpg = $aimage.replace('/raw','.jpg')
+      console.log($aimagejpg);
+
     };
-    // console.log($pimagejpg);
-    console.log($aimagejpg);
 
     // console.log(random.title);
     // console.log(random.descriptions);
@@ -97,7 +107,30 @@ app.get('/', function (req, res)  {
     //randomplaceからタイトルを。randomactivityからタイトルを
     // res.set('Content-Type', 'image/raw');  //ヘッダの指定 jpeg
     // res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
-    res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて${$pimagejpg}`});
+
+    res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて`});
+
+    // res.write('<!DOCTYPE html><br><html lang="ja"><br><head><br><meta http-equiv="content-type" content="text/html; charset=UTF-8"><br><title>Index</title><br></head><br><boby>')
+    // res.write(placetitle);
+    // res.write('で');
+    // res.write(activitytitle);
+    // res.write('してきて<br>');
+    //
+    //
+    // res.write('<img src=');
+    // res.write($pimagejpg);
+    // res.write('><br>');
+    //
+    // res.write('<img src=');
+    // res.write($aimagejpg);
+    // res.write('><br>');
+    //
+    // // res.write('<script type= "text/javascript">');
+    // // res.write('const reloadButton = document.getElementById("reloadButton"); if (reloadButton != null){reloadButton.addEventListener("click",function(){console.log("新しい旅に出会います");location.reload();})}');
+    // // res.write('</script>');
+    // res.write('</body>')
+    // res.end();
+
     // res.locals.placeimage = `${randomplace.image}`;
     // res.locals.activityimage = `${randomactivity.image}`;
     // res.render( 'index', {placeimage: `${randomplace.image}`});
