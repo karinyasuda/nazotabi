@@ -108,29 +108,40 @@ app.get('/', function (req, res)  {
     // res.set('Content-Type', 'image/raw');  //ヘッダの指定 jpeg
     // res.send(randomplace.title +"で"+ randomactivity.title + "してきて！");
 
-    res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて`});
+    //index.pugに値を渡す。
+    // res.render('index', {message: `${randomplace.title}で${randomactivity.title}してきて`});
 
-    // res.write('<!DOCTYPE html><br><html lang="ja"><br><head><br><meta http-equiv="content-type" content="text/html; charset=UTF-8"><br><title>Index</title><br></head><br><boby>')
-    // res.write(placetitle);
-    // res.write('で');
-    // res.write(activitytitle);
-    // res.write('してきて<br>');
-    //
-    //
-    // res.write('<img src=');
-    // res.write($pimagejpg);
-    // res.write('><br>');
-    //
-    // res.write('<img src=');
-    // res.write($aimagejpg);
-    // res.write('><br>');
-    //
-    // // res.write('<script type= "text/javascript">');
-    // // res.write('const reloadButton = document.getElementById("reloadButton"); if (reloadButton != null){reloadButton.addEventListener("click",function(){console.log("新しい旅に出会います");location.reload();})}');
-    // // res.write('</script>');
-    // res.write('</body>')
-    // res.end();
+    //----header----
+    res.write('<!DOCTYPE html><br><html lang="ja"><br><head><br><meta http-equiv="content-type" content="text/html; charset=UTF-8"><br><title>Index</title><br>')
+    res.write('<style type="text/css">');
+    res.write('img {background-color: white; width: 500px; height: 500px; object-fit: contain;}');
+    res.write('</style>');
+    res.write('</head><br>');
+    //----header----
+    //----body----
+    res.write('<boby>');
+    res.write(placetitle);
+    res.write('で');
+    res.write(activitytitle);
+    res.write('してきて<br>');
 
+
+    res.write('<img src=');
+    res.write($pimagejpg);
+    res.write(' width=400px height=auto>');
+
+    res.write('<img src=');
+    res.write($aimagejpg);
+    res.write(' width=400px height=auto><br>');
+
+    // res.write('<script type= "text/javascript">');
+    // res.write('const reloadButton = document.getElementById("reloadButton"); if (reloadButton != null){reloadButton.addEventListener("click",function(){console.log("新しい旅に出会います");location.reload();})}');
+    // res.write('</script>');
+    res.write('</body>')
+    //----body----
+    res.end();
+
+    //テキストエリアに〜〜で〜〜してきて　と表示したかった時の部分
     // res.locals.placeimage = `${randomplace.image}`;
     // res.locals.activityimage = `${randomactivity.image}`;
     // res.render( 'index', {placeimage: `${randomplace.image}`});
