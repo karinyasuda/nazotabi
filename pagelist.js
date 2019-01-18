@@ -16,6 +16,9 @@ var server = app.listen(3000, function () {
 var array
 var title
 var descriptions
+var coordinates = []//座標表示しようつぃてる
+var latitude //緯度　36.572496　/座標表示しようつぃてる
+var longitude//経度　136.666958　/座標表示しようつぃてる
 var image
 var place = [] //place,image それぞれの配列に入れる
 var activity = []
@@ -62,6 +65,7 @@ app.get('/', function (req, res)  {
     randomactivity = activity[Math.floor(Math.random()*activity.length)];
     placetitle = randomplace.title;
     activitytitle = randomactivity.title;
+    coordinates = randomplace.descriptions[2];//座標表示しようつぃてる
 
     // console.log(random);
     $pimage = randomplace.image
@@ -78,6 +82,11 @@ app.get('/', function (req, res)  {
   console.log("タイトルだけ出力");
     console.log(placetitle);
     console.log(activitytitle);
+
+console.log("座標だしたい");
+// console.log(randomplace.descriptions[2]);
+console.log(randomplace.descriptions[2]);//座標出るは出る
+// console.log(longitude);
 
 
 
